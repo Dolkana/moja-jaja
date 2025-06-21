@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Moja Jaja</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    button {
+      font-size: 24px;
+      margin: 10px;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+
+    #counter {
+      font-size: 48px;
+      margin-top: 20px;
+    }
+
+    #label {
+      font-size: 24px;
+      margin-top: 10px;
+    }
+
+    #eggContainer {
+      margin-top: 30px;
+    }
+
+    .egg {
+      width: 50px;
+      height: auto;
+      margin: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h2 id="label">Moja Jaja</h2>
+
+  <button onclick="changeCount(-1)">−</button>
+  <button onclick="changeCount(1)">+</button>
+
+  <div id="counter">0</div>
+
+  <div id="eggContainer"></div>
+
+  <script>
+    let count = 0;
+
+    function changeCount(amount) {
+      count += amount;
+      if (count < 0) count = 0; // Prevent negative eggs
+
+      document.getElementById("counter").textContent = count;
+      renderEggs();
+    }
+
+    function renderEggs() {
+      const container = document.getElementById("eggContainer");
+      container.innerHTML = "";
+
+      for (let i = 0; i < count; i++) {
+        const img = document.createElement("img");
+        img.src = "egg.jpg";
+        img.alt = "Egg";
+        img.className = "egg";
+        container.appendChild(img);
+      }
+    }
+  </script>
+
+</body>
+</html>
